@@ -18,3 +18,13 @@ collections:
       - { label: "Date", name: "date", widget: "date", default: "" }
       - { label: "Post Body", name: "body", widget: "markdown" }
       - { label: "Featured Image", name: "featuredImage", widget: "image" }
+  - name: "heroes"
+    label: "Heroes"
+    folder: "heroes"
+    create: true
+    slug: "{{day}}-{{month}}-{{year}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/hero.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "description", widget: "string" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image" }
