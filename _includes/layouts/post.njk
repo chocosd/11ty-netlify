@@ -1,6 +1,9 @@
 --- 
 layout: layouts/base.njk 
 ---
-<h2>{{ title }}</h2>
-<img src="{{ featuredImage | url }}" alt="{{ featuredImage }}">
-<p>{{ content | safe }}</p>
+<section class="post-header" style="background-image:'{{ featuredImage | url }}';">
+    <h2 class="post-header_title">{{ title }}</h2>
+</div>
+<section class="post-content">
+    <p>{{ content | safe }}</p>
+</section>
