@@ -1,0 +1,23 @@
+@use './scss/abstracts' as *;
+
+.navbar {
+    @extend %dis-flex;
+    display: flex;
+
+    &-item {
+        
+    }
+
+    &-left {
+
+        &_item {
+
+        }
+    }
+
+    &-right {
+        &_item {
+
+        }
+    }
+}
