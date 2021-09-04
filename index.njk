@@ -1,5 +1,7 @@
 ---
-layout: layouts/hero.njk
+layout: layouts/base.njk
 permalink: /
 ---
-Hello! Welcome to the Eleventy + Netlify from scratch homepage.
+
+{% set herolist = collections.heroes[0] %}
+{% include "heroblogs.njk" %}

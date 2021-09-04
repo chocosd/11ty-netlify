@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 %dis-flex {
@@ -15,27 +16,34 @@
     height: 100%;
 }
 
+.navbar-item {
+    font-size: .9rem;
+    color: #4A4A4A;
+    text-decoration: none!important;
+}
+
 .navbar {
     @extend %dis-flex;
     justify-content: space-between;
-
-    &-item {
-        font-size: .9rem;
-        color: #4A4A4A;
-        text-underline: none;
-    }
+    padding: 1rem;
+    border-bottom
 
     &-left {
         @extend %dis-flex;
         &_item {
-            
+            margin: 0.5rem;
+        }
+
+        &_branding {
+            font-weight: 700;
+            font-size: 1rem;
         }
     }
     
     &-right {
         @extend %dis-flex;
         &_item {
-
+            margin: 0 .5rem;
         }
     }
 }
@@ -46,17 +54,21 @@
 
     &-overlay {
         @extend %full-size;
+        @extend %dis-flex;
+        flex-direction: column;
+        color: white;
         background: rgba(0,0,0,.55);
 
         &_title {
-            font-size: 4.5rem;
-            font-weight: 300;
+            font-size: 5rem;
+            font-weight: 100;
+            line-height: 1;
         }
 
         &_subtitle {
-            font-size: 2rem;
-            font-weight: 600;
-            opacity: 0.8;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
     }
 }
