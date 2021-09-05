@@ -1,8 +1,20 @@
+@use 'sass:math';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #F8F8F8;
+}
+
+:root {
+    --third-tile: calc(100% / 3);
+    --quarter-tile: calc(100% / 4);
+    --two-thirds-tile: calc(100% / 1.5);
 }
 
 %dis-flex {
@@ -11,15 +23,30 @@
     align-items: center;
 }
 
+%background-full {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 %full-size {
     width: 100%;
     height: 100%;
 }
 
-.navbar-item {
-    font-size: .9rem;
-    color: #4A4A4A;
-    text-decoration: none!important;
+.navbar {
+    &-inner {
+        max-width: 1440px;
+        @extend %dis-flex;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    &-item {
+        font-size: .9rem;
+        color: #4A4A4A;
+        text-decoration: none!important;
+    }
 }
 
 .navbar {
@@ -35,8 +62,8 @@
         }
 
         &_branding {
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 900;
+            font-size: 1.1rem;
         }
     }
     
@@ -69,6 +96,164 @@
             font-size: 1.3rem;
             font-weight: 400;
             letter-spacing: 1px;
+        }
+    }
+}
+
+section:not(.hero) {
+    max-width: 1440px;
+    padding: 2rem 4rem;
+
+    &:only-child {
+        padding: 4rem 4rem;
+    }
+}
+
+.home-lists_wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.home-tabs {
+    @extend %dis-flex;
+    padding-bottom: 1.2rem;
+
+    .home-section_tab {
+        font-size: .9rem;
+        font-weight: 500;
+        color: #CECDCC;
+        margin: 0 .5rem;
+
+        &:first-child {
+            color: #44D69F;
+        }
+    }
+
+}
+.home-post-gallery {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.home-featured_doc {
+    width: var(--third-tile);
+
+    figure {
+        height: 50%;
+        width: 100%;
+        overflow: hidden;
+        background-image: url('/images/uploads/surfing-3.jpeg');
+        @extend %background-full;
+    }
+
+    .card {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-info {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .card-note {
+            font-size: .8rem;
+            height: .8rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: #8891C4;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+            height: 1.4rem;
+            margin: .6rem 0 1rem;
+            color: #3B3E41;
+        }
+
+        p {
+            font-size: .8rem;
+            color: #C0C4C9;
+        }
+    }
+}
+.home-new-feat_doc {
+    width: var(--two-thirds-tile);
+
+    figure {
+        background-image: url('/images/uploads/alpine-mountain-landscape-with-lake.jpeg');
+        @extend %background-full;
+        width: 50%;
+        height: 100%;
+    }
+    .card-feature_info {
+        padding: 2rem;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .card-badge {
+            background: #44D69F;
+            padding: .2rem 1.4rem;
+            border-radius: 1.4rem;
+            display: inline;
+            color: white;
+            font-size: .8rem;
+            text-transform: uppercase;
+            font-weight: 300;
+            align-self: flex-end;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 2.1rem;
+            height: 2.1rem;
+            margin: 0 0 1rem;
+            color: #3B3E41;
+        }
+    }
+}
+.home-new-asset_docs {
+    width: var(--quarter-tile);
+}
+.home-new_guides {
+    width: var(--third-tile);
+}
+.home-new_releases {
+    width: var(--two-thirds-tile);
+}
+.home-market_blogs {
+    width: var(--third-tile);
+}
+
+.home-featured_doc, .home-new-feat_doc,
+.home-new-asset_docs, .home-new_guides,
+.home-new_releases, .home-market_blogs {
+    height: 400px;
+    
+    .card {
+        background: white;
+        @extend %dis-flex;
+        overflow: hidden;
+        margin: 8px;
+        height: calc(100% - 16px);
+        width: calc(100% - 16px);
+        border-radius: 0.5rem;
+
+        p {
+            font-size: .8rem;
+            color: #C0C4C9;
         }
     }
 }
