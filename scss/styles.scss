@@ -1,5 +1,7 @@
 @use 'sass:math';
 
+$primary-color: #44D69F;
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,7 @@ body {
 :root {
     --third-tile: calc(100% / 3);
     --quarter-tile: calc(100% / 4);
+    --fifth-tile: calc(100% / 5);
     --two-thirds-tile: calc(100% / 1.5);
 }
 
@@ -35,9 +38,17 @@ body {
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 10;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.1);
     &-inner {
         max-width: 1440px;
+        padding: 0 4.5rem;
         @extend %dis-flex;
+        justify-content: space-between;
         width: 100%;
         margin: 0 auto;
     }
@@ -45,6 +56,7 @@ body {
     &-item {
         font-size: .9rem;
         color: #4A4A4A;
+        font-weight: 300;
         text-decoration: none!important;
     }
 }
@@ -78,13 +90,14 @@ body {
 .hero {
     width: 100%;
     height: 80vh;
+    @extend %background-full;
 
     &-overlay {
         @extend %full-size;
         @extend %dis-flex;
         flex-direction: column;
         color: white;
-        background: rgba(0,0,0,.55);
+        background: rgba(0,0,0,.3);
 
         &_title {
             font-size: 5rem;
@@ -94,8 +107,11 @@ body {
 
         &_subtitle {
             font-size: 1.3rem;
-            font-weight: 400;
+            max-width: 65ch;
             letter-spacing: 1px;
+            text-align: left;
+            font-weight: 100;
+            margin-top: 1rem;
         }
     }
 }
@@ -188,7 +204,7 @@ section:not(.hero) {
 .home-new-feat_doc {
     width: var(--two-thirds-tile);
 
-    figure {
+    .new-feature-hero {
         background-image: url('/images/uploads/alpine-mountain-landscape-with-lake.jpeg');
         @extend %background-full;
         width: 50%;
@@ -203,10 +219,20 @@ section:not(.hero) {
         align-items: flex-start;
         justify-content: flex-start;
 
+        .card-feature-info_desc {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
         .card-badge {
-            background: #44D69F;
+            background: $primary-color;
             padding: .2rem 1.4rem;
-            border-radius: 1.4rem;
+            border-radius: 0 0 0 0.5rem;
+            transform: translate(2rem, -2rem);
             display: inline;
             color: white;
             font-size: .8rem;
@@ -222,19 +248,30 @@ section:not(.hero) {
             margin: 0 0 1rem;
             color: #3B3E41;
         }
+
+        .new-feat_photos {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            img {
+                width: 114px;
+                height: 114px;
+                
+                object-fit: cover;
+
+                &:first-child {
+                    border-radius: 0.5rem 0 0 0.5rem;
+                }
+
+                &:last-child {
+                    border-radius: 0 0.5rem 0.5rem 0;
+                }
+            }
+        }
     }
-}
-.home-new-asset_docs {
-    width: var(--quarter-tile);
-}
-.home-new_guides {
-    width: var(--third-tile);
-}
-.home-new_releases {
-    width: var(--two-thirds-tile);
-}
-.home-market_blogs {
-    width: var(--third-tile);
 }
 
 .home-featured_doc, .home-new-feat_doc,
@@ -250,10 +287,188 @@ section:not(.hero) {
         height: calc(100% - 16px);
         width: calc(100% - 16px);
         border-radius: 0.5rem;
-
+        
         p {
             font-size: .8rem;
             color: #C0C4C9;
         }
     }
+}
+
+.home-new-asset_docs {
+    width: var(--fifth-tile);
+    height: 262px;
+
+    .card {
+        background: #44D69F;
+        background: linear-gradient(0deg, #44D69F 0%, #44d6cb 70%);
+        @extend %dis-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #fff;
+        padding: 2rem;
+
+        .card-note {
+            font-size: .8rem;
+            height: .8rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            text-align: left;
+            width: 100%;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+            height: 1.4rem;
+            margin: .6rem 0 1rem;
+            width: 80%;
+            text-align: left;
+        }
+    }
+}
+.home-new_guides {
+    width: var(--third-tile);
+
+    .card {
+        @extend %dis-flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .card-content {
+            height: 50%;
+            width: 100%;
+            @extend %dis-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2rem;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 1.6rem;
+            margin: 0;
+            line-height: 1.1;
+            color: #3b3e41;
+        }
+
+        .card-author {
+            margin: .5rem 0;
+        }
+
+        .card-author_name , .card-author_divider, .card-author_role {
+            font-size: .8rem;
+            height: .8rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: #c0c4c9;
+        }
+
+        .card-author_divider {
+            color: $primary-color;
+            font-size: .7rem;
+            font-weight: 600;
+        }
+    }
+    figure {
+        height: 50%;
+        width: 100%;
+        overflow: hidden;
+        @extend %dis-flex;
+
+        figcaption {
+            position: absolute;
+            z-index: 2;
+            color: white;
+            transform: translatey(-4.2rem);
+            background: rgb(0,0,0);
+            background: linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0) 100%);
+            width: 421px;
+            padding: 1rem 2rem 1.5rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            font-size: .8rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        img {
+            height: auto;
+            width: 100%;
+        }
+    }
+    .home-guides_profile {
+        height: 0;
+
+        .home-guides_avatar {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 4rem;
+            background: #44d69f;
+            border: .25rem solid #fff;
+            object-fit: scale-down;
+            position: relative;
+            bottom: 50%;
+            transform: translatey(-50%);
+        }
+    }
+}
+
+.home-new_releases {
+    width: var(--two-thirds-tile);
+    @extend %dis-flex;
+    justify-content: flex-start;
+
+    .card {
+        background-image: url('/images/uploads/image-4.jpeg');
+        background-size: cover;
+        background-position: 50% 20%;
+        background-repeat: no-repeat;
+        align-items: flex-start;
+        width: 50%;
+        margin-right: 0;
+        border-radius: .5rem 0 0 .5rem;
+
+            .soclai-media_toolbar {
+                width: 100%;
+                padding: 1rem 2rem;
+                @extend %dis-flex;
+                justify-content: space-between;
+                background: rgba(0,0,0,.55);
+                .social-toolbar_info {
+                    @extend %dis-flex;
+                    .social-toolbar_icon {
+                        margin-right: 1rem;
+                        padding: .15rem;
+                        border: .15rem solid #F5543B;
+                        border-radius: 3rem;
+                        
+                        .social-toolbar-avatar {
+                            height: 2rem;
+                            width: 2rem;
+                            border-radius: 2rem;
+                        }
+                    }
+
+                    .social-toolbar_name {
+                        color: white;
+                    }
+                }
+            }
+
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    }
+
+    .card-right {
+        width: calc(50% - 16px);
+        height: calc(100% - 16px);
+        background: white;
+        border-radius: 0 .5rem .5rem 0;
+    }
+}
+.home-market_blogs {
+    width: var(--third-tile);
 }
