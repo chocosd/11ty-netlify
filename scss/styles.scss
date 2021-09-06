@@ -1,5 +1,10 @@
 @use 'sass:math';
 
+@font-face {
+font-family: "Minotaur";
+src: url("/fonts/Minotaur\ Phatte.ttf") format("truetype");
+}
+
 $primary-color: #44D69F;
 
 * {
@@ -83,6 +88,16 @@ body {
         @extend %dis-flex;
         &_item {
             margin: 0 .5rem;
+        }
+
+        &_cta {
+            background: #44d69f;
+            padding: .4rem 1.4rem;
+            border-radius: 0;
+            color: #fff;
+            font-size: .8rem;
+            text-transform: uppercase;
+            font-weight: 300;
         }
     }
 }
@@ -293,6 +308,10 @@ section:not(.hero) {
             color: #C0C4C9;
         }
     }
+
+    .card, .card-right {
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+    }
 }
 
 .home-new-asset_docs {
@@ -467,6 +486,35 @@ section:not(.hero) {
         height: calc(100% - 16px);
         background: white;
         border-radius: 0 .5rem .5rem 0;
+        padding: 2rem;
+
+        .card-title {
+            font-weight: 600;
+            font-size: 2.4rem;
+            height: 2.4rem;
+            line-height: 1.2;
+            margin: 0 0 1rem;
+            color: #3b3e41;
+            margin-left: 1.5ch;
+
+            strong {
+                font-size: 4rem;
+                color: $primary-color;
+                height: 2.1rem;
+                line-height: 2.1rem;
+                position: absolute;
+                font-family: "Minotaur", 'Trebuchet MS', sans-serif;
+                font-weight: 700p;
+
+                &:first-child {
+                    transform: translate(-2.2rem, 1.4rem);
+                }
+
+                &:last-child {
+                    transform: translatey(1.2rem);
+                }
+            }
+        }
     }
 }
 .home-market_blogs {
